@@ -1,0 +1,53 @@
+<html>
+<head></head>
+<body>
+
+<table class = "invoice" id = "mytable">
+
+</table>
+
+<button onclick = "prevFuntion()">prev</button><button onclick = "nextFuntion()">next</button>
+<div  id="JASONDATA">
+</div>
+
+<script >
+document.addEventListener("DOMContentLoaded",function(){
+	gridData(0,10);
+	
+});
+var pagecount=1;
+
+var gridData = (start,limit)=>{
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("GET","http://localhost:8062/H2HBABBA1533/getactordata.do?start="+start+"&limit="+limit,false);
+	xhttp.send();
+	var jasonData=JSON.parse(xhttp.responseText);
+
+	console.log(jasonData);
+	var tabledata='<tr><th><img class="style1" alt="" src="images/check_box_outline_blank-black-18dp.svg"></th><th>customer Name</th><th>customer #</th> <th>invoice #</th><th>invoice amount</th><th>Due Date</th> <th>Predicted Payment date</th> <th>Notes</th></tr>';
+	for (var i = 0; i < jasonData.length; i++) {
+		tabledata+='<tr><td>'+jasonData[i].name+'</td><td>'+jasonData[i].business_code+'</td><td>'+jasonData[i].cust_number+'<td>'
+		
+	}
+	document.getElementById('mytable').innerHTML=tabledata
+}
+
+
+function prevFuntion(){
+	if(pagecount >=2)
+		{
+		pagecount --;
+		}
+	gridData((pagecount-1)*10,10);
+}
+function nextFuntion(){
+	pagecount++;
+	gridData((pagecount-1)*10,10);
+}
+
+</script>
+
+
+
+</body>
+</html>

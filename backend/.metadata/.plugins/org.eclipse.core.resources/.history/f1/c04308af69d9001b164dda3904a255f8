@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="styles/style.css" />
+<title>Highradius</title>
+</head>
+<body>
+
+<div class="header">
+
+  <div class="flex-logo1">
+    <img class = 'companyName' alt="" src="images/Group 20399.svg">
+  </div>
+  
+  <div class="flex-child green">
+    <img class= 'logo'src= 'images/logo.svg'/>
+  </div>
+  
+</div>
+<div>
+<h2 class= 'invoiceTitle'>Invoice List</h2>
+</div>
+ 
+</body>
+</html>

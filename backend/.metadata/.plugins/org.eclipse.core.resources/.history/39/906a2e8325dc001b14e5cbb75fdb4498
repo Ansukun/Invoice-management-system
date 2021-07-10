@@ -1,0 +1,30 @@
+<html>
+<head></head>
+<body>
+
+var pagenumber = 1;
+function loadData(start,limit){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("GET","http://localhost:8082/H2HBABBA1533/hello.do?start = "+start+"&limit ="+limit,false);
+	xhttp.send();
+	console.log(JSON.parse(xhttp.responseText)))
+}
+
+
+function prevFuntion(){
+	if(pageNumber >=2)
+		{
+		pageNumber --;
+		}
+	loadData((pageNumber-1)*5,5);
+}
+function nextFuntion(){
+	pageNumber++;
+loadData((pageNumber-1)*5,5);
+}
+</script>
+
+
+
+</body>
+</html>

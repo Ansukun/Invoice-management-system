@@ -1,0 +1,35 @@
+
+body
+{
+	background-color :#58687E;
+}
+
+
+
+
+ .Header {
+        display: flex;
+        padding-Block: 5px;
+        width: 1553.620;
+    }
+    
+    .ABCContainer{
+        display: flex;
+    }
+    .ABCLogo{
+       
+    }
+    .ABCText {
+        font: 'Futura PT';
+        font-Size: 39px;
+        font-Weight: 'bold';
+        color: '#FFFFFF';
+        padding-Left: 10px;
+        vertical-Align: 'center';
+    }
+    .HRCLogo {
+        top: '0%';
+        text-Align: center;
+        padding-Block: 10px;
+        width: windowinnerWidth - 40,
+    }

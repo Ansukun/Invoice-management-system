@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Highradius</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+
+
+</head>
+
+<body style="overflow: hidden;">
+
+
+    <div class="nav_header">
+
+        <img class="logo" alt="" src="images/Group 20399.svg">
+        <img class="brand_logo" alt="" src="images/logo.svg">
+
+    </div>
+    <div class="heading">
+        <h4 class="invoice-list">Invoice list</h4>
+    </div>
+    <div class="invoiceDiv">
+        <div class="button">
+            <button class="add" id='myBtn3'><img class="add_symbol" src="images/Path 18189.svg" /> Add</button>
+            <button id='myBtn2' class="edit"><img class="edit_symbol" src="images/Path 18191.svg" />
+                                Edit</button>
+            <button id='myBtn' class="delete" value="Delete Row"><img class="delete_symbol"
+                                        src="images/Path 18189-1.svg" /> Delete</button>
+            <input class="search" id="search" onkeyup="SearchByInvoiceId()" placeholder="Search by Invoice ID                  ">
+
+        </div>
+
+        <div class='invoice-table'>
+
+            <table class="table_layout" id="mytable" style="width:100%; border-collapse:collapse ">
+            </table>
+        </div>
+        <button class="nextButton" onclick="nextPageFuntion()"><img src =  "images/next.svg" alt ="next"  style = "height:30px; width:30px;"></button>
+
+        <button class="prevButton" onclick="prevPageFuntion()"><img  src =  "images/previous.svg" alt = "prev"  style = "height:30px; width:30px;"></button>
+
+
+        <!-- The  Delete Modal -->
+        <div id="myModal" class="deleteModal">
+
+            <!--  Delete Modal content -->
+            <div class="deleteModalContent">
+                <span class="close">&times;</span>
+                <div>
+                    <h2 class='deleteHeading'>Delete record(s)?</h2>
+                </div>
+                <hr>
+                <div class="deleteContent">
+                    <span class="deleteContent">You'll lose your record(s) after this action. We
+                                                can't recover them once you delete. Are you sure you want to <span style="color: #FF5E5E;">permanently delete</span> them?</span>
+                </div>
+                <hr>
+                <div class='deleteButton'>
+                    <button class="deleteCancel">Cancel</button>
+                    <button class="deleteconfirm" onclick="deleteRow('mytable')">Delete</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Edit Modal content -->
+
+        <form action="edit" method="post" id="editForm">
+
+            <div id="myModal2" class="editModal">
+
+                <!--  Edit Modal content -->
+                <div class="editModalContent">
+                    <span class="editClose">&times;</span>
+                    <div>
+                        <h2 class='editHeading'>Edit Invoice</h2>
+                    </div>
+                    <hr>
+                    <div class="editContent">
+                        <div><span class="invoiveAmountHead"> Invoice Amount</span> <input class="editInvoice" name="invoiceAmount"> </div>
+                        <input id="selectedCheckbox" type='hidden' name="checkedId">
+                        <div style="margin-top: 30px; margin-bottom: 20px;"><span class="editNoteHead">Notes</span> <input class="editNotes" name="invoiceNotes"></div>
+                    </div>
+
+
+                    <div class='editButton'>
+
+                        <button type="reset" class="editReset">Reset</button>
+                        <button class="editSave">Save</button>
+                    </div>
+                    <button class="editCancel">Cancel</button>
+
+
+                </div>
+
+            </div>
+        </form>
+
+        <!-- ADD The Modal -->
+        <form action="add" method="post" id="addform">
+            <div id="add_modal" class="addModal">
+                <div class="addModalContent">
+                    <div>
+                        <span class="addClose">&times;</span>
+                        <p class="addModalHead">Add Invoices</p>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <label class="labelName">Customer Name <span class="importantNote">*</span></label>
+                            <input class="addInput" id="inputCustName" name="name">
+                            <div>
+                                <label class="labelName" id="CustomerID">Customer No <span class="importantNote">*</span></label>
+                                <input class="addInput" name="cust_no">
+                            </div>
+                            <div>
+                                <label class="labelName" id="invoiceId">Invoice No <span class="importantNote">*</span> </label>
+                                <input class="addInput" name="invoice_no">
+                            </div>
+                            <div>
+                                <label class="labelName">Invoice Amount <span class="importantNote">*</span></label>
+                                <input class="addInput" name="invoice_amt">
+                            </div>
+                        </div>
+                        <div class="column" id="col">
+                            <label class="labelName" style="margin-left: 50px;">Due Date <span class="importantNote">*</span></label>
+                            <input type="date" class="dateInput" name="due_date">
+                            <div>
+                                <label class="labelName" style="margin-left: 50px;">Notes <span class="importantNote">*</span></label>
+                                <input class="noteInput" name="notes">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+
+                        <button type="reset" class="cancelButton">
+                           <span class = "cancelText">Cancel</span>
+                        </button>
+                        <button class="clearButton" onClick="alert_confirm()" type="reset">Clear</button>
+                        <button type="submit" class="addButton"> Add</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+
+
+
+        <SCRIPT>
+            //Load Jason Data from servlet 
+            document.addEventListener("DOMContentLoaded", function() {
+                loadData(0, 8);
+
+            });
+            var pagecount = 1;
+
+            var loadData = (start, limit) => {
+                const xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "http://localhost:8020/H2HBABBA1533/getactordata.do?start=" + start + "&limit=" + limit, false);
+                xhttp.send();
+                var jasonData = JSON.parse(xhttp.responseText);
+
+                function amountToKFormat(num) {
+                    return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'K' : Math.sign(num) * Math.abs(num)
+                }
+
+                console.log(jasonData);
+                var tabledata = '<tr><th><img class="style1"   alt="" src="images/check_box_outline_blank-black-18dp.svg"></th><th>customer Name</th><th>customer #</th> <th>invoice #</th><th>invoice amount</th><th>Due Date</th> <th>Predicted Payment date</th> <th>Notes</th></tr>';
+                for (var i = 0; i < jasonData.length; i++) {
+                    tabledata += '<tr><td><INPUT class = "checkBox" type="checkbox"  id  = ' + jasonData[i].invoice_id + '  name="chk"/></td><td>' + jasonData[i].name + '</td><td>' + jasonData[i].cust_number + '</td><td>' + jasonData[i].invoice_id + '</td><td>' + amountToKFormat(jasonData[i].total_open_amount) + '</td><td>' + jasonData[i].due_in_date + '</td><td>' + jasonData[i].clear_date + '</td><td>' + jasonData[i].Delay_Grouped + '</td>'
+
+                }
+                document.getElementById('mytable').innerHTML = tabledata
+            }
+
+
+            function prevPageFuntion() {
+                if (pagecount >= 2) {
+                    pagecount--;
+                }
+                loadData((pagecount - 1) * 8, 8);
+            }
+
+            function nextPageFuntion() {
+                pagecount++;
+                loadData((pagecount - 1) * 8, 8);
+            }
+
+
+            //Search by invloice Id
+
+            var SearchByInvoiceId = () => {
+                var searchId = document.getElementById("search").value;
+                var Table = document.getElementById("mytable");
+                var tr = Table.getElementsByTagName("tr");
+
+                for (var i = 0; i < tr.length; i++) {
+                    var td = tr[i].getElementsByTagName('td')[3];
+
+                    if (td) {
+                        let invoiceId = td.textContent || td.innerHTML;
+
+                        if (invoiceId.indexOf(searchId) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+
+                }
+
+
+            }
+
+
+
+
+
+
+            function deleteRow(tableID) {
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+                    var span = document.getElementsByClassName("deleteButton")[0];
+                    var Tabledata = document.getElementById("mytable");
+                    var tableRow = Tabledata.getElementsByTagName("tr");
+                    span.onclick = function() {
+                        modal1.style.display = "none";
+                    }
+                    for (var i = 0; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[0];
+                        if (null != chkbox && true == chkbox.checked) {
+                            tableRow[i].style.backgroundColor = "#14AFF1";
+                            if (rowCount <= 1) {
+                                alert("Cannot delete all the rows.");
+
+                                break;
+                            }
+                            table.deleteRow(i);
+                            rowCount--;
+                            i--;
+                        }
+
+
+                    }
+
+                } catch (e) {
+                    alert(e);
+                }
+            }
+            //Display of Add Modal On click of button
+
+            var modal3 = document.getElementById("add_modal");
+            var btn3 = document.getElementById("myBtn3");
+            var addclose = document.getElementsByClassName("addClose")[0];
+            var cancelBtn = document.getElementsByClassName("cancelButton");
+            var submitbtn = document.getElementsByClassName("addButton");
+            btn3.onclick = function() {
+                modal3.style.display = "block";
+            }
+            cancelBtn.onclick = function() {
+                modal3.style.display = "none";
+            }
+            addclose.onclick = function() {
+                modal3.style.display = "none";
+            }
+
+            submitbtn.onclick = function() {
+                modal3.style.display = "none";
+                alert("Added to the Database sucessfully");
+            }
+
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal3.style.display = "none";
+                }
+            }
+
+
+
+
+
+
+
+            //display of delete modal
+            var modal1 = document.getElementById("myModal");
+            var btn = document.getElementById("myBtn");
+            var closeBtn1 = document.getElementsByClassName("close")[0];
+
+
+            closeBtn1.onclick = function() {
+                modal1.style.display = "none";
+            }
+
+
+            btn.onclick = function() {
+                modal1.style.display = "block";
+            }
+
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal1.style.display = "none";
+                }
+            }
+
+
+
+
+
+            // Display of Edit Modal on click of a button
+
+
+            var modal2 = document.getElementById("myModal2");
+            var btn = document.getElementById("myBtn2");
+            var closeBtn2 = document.getElementsByClassName("editClose")[0];
+
+
+            btn.onclick = function() {
+                modal2.style.display = "block";
+                try {
+
+                    const checkedBoxIds = document.querySelector('.checkBox:checked').id;
+                    document.getElementById("selectedCheckbox").value = checkedBoxIds;
+                    console.log(checkedBoxIds);
+                } catch (e) {
+                    alert("NO ROW SELECTED")
+                    modal2.style.display = "none";
+                }
+
+            }
+
+            closeBtn2.onclick = function() {
+                modal2.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal2) {
+                    modal2.style.display = "none";
+                }
+            }
+
+            var span2 = document.getElementsByClassName("editSave")[0];
+            span2.onclick = function() {
+                modal2.style.display = "none";
+            }
+
+            var cancelBtn = document.getElementsByClassName("editCancel")[0];
+            cancelBtn.onclick = function() {
+                modal2.style.display = "none";
+            }
+        </SCRIPT>
+
+</body>
+
+</html>

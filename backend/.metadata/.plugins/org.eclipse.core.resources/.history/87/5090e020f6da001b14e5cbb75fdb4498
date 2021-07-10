@@ -1,0 +1,328 @@
+h1{
+    color: #ff0080;
+}
+body{
+	top: 0px;
+left: 0px;
+height: 641px;
+background: transparent radial-gradient(closest-side at 50% 50%, #58687E 0%, #39495E 100%) 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+
+.brand_logo{
+	top: 22px;
+margin-left:300px;
+background: transparent url('img/logo.png') 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+.heading{
+	top: 100px;
+left: 30px;
+height: 31px;
+text-align: left;
+font: normal normal normal 28px/32px Ubuntu;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+}
+.logo{
+	top: 16px;
+left: 86px;
+width: 233px;
+height: 52px;
+text-align: left;
+font: normal normal bold 39px/52px Ubuntu;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+}
+
+
+.button{
+    float: right;
+    margin: 7px;
+}
+.add_button{
+	top: 190px;
+width: 99px;
+height: 45px;
+border: 1px solid #14AFF1;
+border-radius: 10px;
+opacity: 1;
+}
+
+.invoiceDiv{
+    top: 160px;
+	left: 20px;
+	height: 490px;
+    padding: 10px;
+	border-radius: 10px;
+    background: #273D49CC 0% 0% no-repeat padding-box;
+	opacity: 1;
+    align-items: flex-end;
+}
+
+.add{
+     top: 190px;
+     left: 1126px;
+     width: 99px;
+     height: 30px;
+     color:#FFFFFF;
+     font-size: 18px;
+    font: 'Ubuntu';
+     background: #273D49CC 0% 0% no-repeat padding-box;
+     border: 1px solid #14AFF1;
+     border-radius: 10px;
+     opacity: 1;
+     margin: 4px;
+}
+
+.add:hover
+{
+    background: #17252cee 0% 0% no-repeat padding-box;
+    cursor: pointer;
+}
+
+.add_symbol
+{
+    width: 14px;
+height: 14px;
+top: 206px;
+left: 1144px;
+  
+}
+
+
+.edit
+{
+    top: 190px;
+     left: 1126px;
+     width: 99px;
+     height: 30px;
+     color: #97A1A9;
+     font-size: 18px;
+     font-family: 'Ubuntu';
+     background: #273D49CC 0% 0% no-repeat padding-box;
+     border: 1px solid #97A1A9;
+     border-radius: 10px;
+     opacity: 1;
+     margin: 4px;
+}
+.edit:hover
+{
+    background: #17252cee 0% 0% no-repeat padding-box;
+    cursor: pointer;
+}
+
+.delete
+{
+    top: 190px;
+     left: 1126px;
+     width: 99px;
+     height: 30px;
+     font-size: 18px;
+     font-family: 'ubuntu';
+     color: #97A1A9;
+     background: #273D49CC 0% 0% no-repeat padding-box;
+     border: 1px solid #97A1A9;
+     border-radius: 10px;
+     opacity: 1;
+     margin: 4px;
+
+}
+.delete:hover
+{
+    background: #17252cee 0% 0% no-repeat padding-box;
+    cursor: pointer;
+}
+
+
+.delete_symbol
+{
+    padding-bottom: 6px;
+    color: #97A1A9;
+}
+
+.search
+{
+top: 190px;
+left: 1525px;
+width: 210px;
+height: 30px;
+text-align: left;
+color: #97A1A9;
+font-size: 10px;
+font-family: Arial, Helvetica, sans-serif;
+font: normal normal normal 18px/21px Ubuntu;
+background: #283A46 0% 0% no-repeat padding-box;
+border: 1px solid #356680 ;
+border-radius: 10px;
+letter-spacing: 0px;
+color: #97A1A9;
+opacity: 1;
+padding-left: 8px;
+margin: 4px;
+}
+.search:hover
+{
+    background: #17252cee 0% 0% no-repeat padding-box;
+    cursor: pointer;
+}
+.table_layout
+{
+    margin-top: 100px;
+}
+
+
+th{
+    font: normal normal normal 20px/24px Ubuntu;
+    color: #97A1A9;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    border-bottom:  5px solid #152025cc;
+    text-align: left;
+     padding: 8px;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+    font: normal normal normal 20px/24px Ubuntu;
+    font: ' Ubuntu';
+    font-size: 15px;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    overflow: hidden;
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #283A46;
+  }
+tr
+{
+    
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    margin-bottom:  50px;
+}
+
+
+
+
+
+
+.deleteModal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto;  
+  }
+  
+ 
+  .deleteModalContent {
+    background-color: #2A3F4D;
+    margin: auto;
+    padding: 20px;;
+    top: 294px;
+    left: 654px;
+    width: 611px;
+    height: 342px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  .deleteHeading
+  {
+    color:white;
+    font: normal normal normal 20px/24px Ubuntu;
+    font-size: 25px;
+    margin-bottom: 50px;
+  }
+  .deleteContent
+  {   
+      color:#C0C6CA;
+      font: normal normal normal 20px/24px Ubuntu;
+      font-size: 15px;
+      top: 415px;
+      left: 684px;
+      width: 531px;
+      height: 295px;
+      text-align: left;
+      letter-spacing: 0px;
+      margin-top: 60px;
+      padding-bottom: 200px;
+      margin-bottom: 300px;
+  }
+  
+
+  .deleteButton
+  {
+    float: right;
+    margin-left: 50px;
+    margin-top: 115px;
+  }
+
+
+  .deleteCancel
+  { top: 566px;
+    left: 1134px;
+    width: 101px;
+    height: 45px;
+    background: #273D49CC 0% 0% no-repeat padding-box;
+    border: 1px solid #14AFF1;
+    color: wheat;
+    border-radius: 10px;
+    opacity: 1;
+ 
+  }
+  .deleteCancel:hover
+  {
+    background: #152630cc ;
+  }
+  
+  .deleteconfirm
+  {
+    top: 566px;
+    left: 1134px;
+    width: 101px;
+    height: 45px;
+    background: #14AFF1 0% 0% no-repeat padding-box;
+    color: wheat;
+    border-radius: 10px;
+    border : none;
+    opacity: 1;
+   
+  }
+  .deleteconfirm:hover{
+
+    background: #096085 ;
+
+  }
+
+
+
+  

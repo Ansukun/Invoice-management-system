@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="styles/style.css" />
+<title>Highradius</title>
+</head>
+<body>
+
+<div class="flex-container">
+
+  <div class="flex-child magenta">
+    <h1 class = 'companyName'>ABC Company</h1>
+  </div>
+  
+  <div class="flex-child green">
+    Highraduis
+  </div>
+  
+</div>
+ 
+</body>
+</html>

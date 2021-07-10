@@ -1,0 +1,39 @@
+<html>
+<head></head>
+<body>
+
+<button onclick = "prevFuntion()">prev</button><button onclick = "nextFuntion()">next</button>
+<div id = "JASONDATA">
+</div>
+
+
+<script >
+var pagenumber = 1;
+document.addEventListener("DOMContentLoaded",function(){
+	loadData(0,5);
+});
+function loadData(start,limit){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("GET","http://localhost:8062/H2HBABBA1533/hello.do?start = "+start+"&limit ="+limit,false);
+	xhttp.send();
+	document.getElementById("JASONDATA").innerHTML = xhttp.responseText;
+}
+
+
+function prevFuntion(){
+	if(pageNumber >=2)
+		{
+		pageNumber --;
+		}
+	loadData((pageNumber-1)*5,5);
+}
+function nextFuntion(){
+	pageNumber++;
+loadData((pageNumber-1)*5,5);
+}
+</script>
+
+
+
+</body>
+</html>

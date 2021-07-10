@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="styles/style.css" />
+<title>Highradius</title>
+</head>
+<body>
+
+<div class="Header">
+            <div class="ABCContainer">
+                   <img  class = "ABCLogo "alt="" src="images/Group 20399.svg"> 
+                
+            </div>
+            <div class="HRCLogo">
+                <img  class = "HRCLogo "alt="" src="images/logo.svg">
+            </div>
+        </div>
+ 
+</body>
+</html>

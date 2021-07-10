@@ -1,0 +1,42 @@
+
+body
+{
+	background-color :#58687E;
+}
+
+
+
+
+ .Header {
+        display: flex;
+        padding-Block: 5px;
+        width: 1553.620;
+    }
+    
+    .ABCContainer{
+        display: flex;
+    }
+    .ABCLogo{
+        top:20px;
+        left: 30px;
+        width: 44px;
+        height: 46px;
+        padding-Left: 5px;
+        opacity: 1;
+        fill: #CD7925;
+    }
+    .ABCText {
+        font: 'Futura PT';
+        font-Size: 39px;
+        font-Weight: 'bold';
+        color: '#FFFFFF';
+        padding-Left: 10px;
+        vertical-Align: 'center';
+    }
+    .HRCLogo {
+        position: absolute;
+        top: '0%';
+        text-Align: center;
+        padding-Block: 10px;
+        width: windowinnerWidth - 40,
+    }

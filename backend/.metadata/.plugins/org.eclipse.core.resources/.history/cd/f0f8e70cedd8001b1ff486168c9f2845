@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="styles/style.css" />
+<title>Highradius</title>
+</head>
+<body>
+<div class = 'header'>
+ <h1 class = 'companyName'>ABC Company</h1>
+ <div class = 'logo'>
+  <h1>Highraduis</h1>
+ </div>
+
+</div>
+
+<div class="float-container">
+
+  <div class="float-child">
+    <div class="green">Float Column 1</div>
+  </div>
+  
+  <div class="float-child">
+    <div class="blue">Float Column 2</div>
+  </div>
+  
+</div>
+ 
+</body>
+</html>
